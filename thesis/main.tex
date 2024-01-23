@@ -1,0 +1,140 @@
+%cSpell: disable
+\documentclass[11pt, a4paper, numbers=noenddot]{scrreprt} %general formatting
+%%%%%%%%%%%%%%%%%%%Imports%%%%%%%%%%%%%
+\usepackage[english]{babel}
+\usepackage{lipsum} %Generate dummy text for the template
+\usepackage[utf8]{inputenc} % Required for inputting international characters
+\usepackage[T1]{fontenc} % Output font encoding for international characters
+\usepackage{mathpazo} % Palatino font
+\usepackage{caption} 
+\usepackage{adjustbox} %rotate images in the appendix
+\usepackage{pdflscape}
+\usepackage{amsmath} % matrices
+\usepackage[
+   colorlinks,        % Links without boxes and in defined colours
+   linkcolor=.,
+   citecolor=.,
+   filecolor=.,
+   menucolor=.,
+   runcolor=.
+   ]{hyperref} %Links clickable in the document
+\usepackage{url}    %for better formatting
+\usepackage{ragged2e}
+\usepackage[english]{varioref} %for nicer referencing with automatic page number. Has to be included BEFORE CLEVEREF!
+\usepackage[english]{cleveref} %for nicer referencing ::: don't combine with "showonlyrefs" from "mathtools"!!!
+\crefformat{footnote}{#2\footnotemark[#1]#3} %now also footnotes can be referenced with cref
+\usepackage{enumitem} %to reference enumerations
+\usepackage{placeins} %forces image placing
+\usepackage{pdfpages} % for including pdf as a whole page
+
+%%% LSTLISTING %%%
+\usepackage{listings}
+%Configure lstlisting syntax highlighting for CPP%
+\usepackage{xcolor}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstset{language=C, captionpos=b}
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\lstset{style=mystyle}
+%%%
+
+\usepackage{subcaption}
+\usepackage{setspace}
+\setstretch {1.241} %equals word spacing 1.5 @ 12 pt font size 
+% https://www.overleaf.com/learn/latex/Articles/How_to_change_paragraph_spacing_in_LaTeX
+
+%%% GRAPHICS %%%
+\usepackage{graphicx} %include images
+\graphicspath{{figures/}}
+% \usepackage{sidecap} %for putting figure captions next to a figure instead of under the figure
+\usepackage{float}
+% \usepackage{float} zur Fixierung von Bildern (Parameter [h] oder [H] usw.)
+%%%
+
+%%% GLOSSARY %%%
+\usepackage[toc, acronym]{glossaries}
+\makeglossaries
+\input{appendices/glossary.tex}
+%%%
+
+%%% bibliography %%%
+\usepackage[backend=biber, style=ieee]{biblatex}
+\addbibresource{example_bib.bib}
+
+\usepackage{csquotes}
+
+
+%%comment following line when finished
+% \usepackage{showkeys} %for showing label names in document (for debugging)
+
+
+
+
+%%%%%%%%%%%%%%%%%%%DOCUMENT%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+%%%%%%%%%%%%%%%TITLE PAGE%%%%%%%%%%%%%%%%%%%%%%%
+% \includepdf{Cover_Page.pdf}
+% \input{cover_page.tex}
+
+
+
+
+%%%%%%%%%%%%%%%%ABSTRACT%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{roman}
+\input{chapters/0_Executive_summary.tex}
+\clearpage
+
+%%%%%%%%%LIST OF CONTENTS/FIGURES/TABLES%%%%%%%%
+\tableofcontents % Prints the main table of contents
+\clearpage
+\listoffigures % Prints the list of figures
+% \listoftables
+% \lstlistoflistings
+
+%%%%%%%%%%%%%%%%%CHAPTERS%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\pagenumbering{arabic}
+\input{chapters/1_Introduction.tex}
+
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%APPENDICES%%%%%%%%%%%%%%%%%%%%
+\appendix
+
+\printglossaries
+
+\printbibliography[heading=bibintoc,title={References}]
+
+\input{appendices/appendix.tex}
+
+%%%%%%%%%%%%%%%%%%Statutory Declaration%%%%%%%%%%%%%%%
+\clearpage
+\input{appendices/statutory_declaration.tex}
+
+\end{document}  

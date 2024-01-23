@@ -1,0 +1,19 @@
+% !TeX root = ..\main.tex
+
+%example for glossary with acronyms
+\newglossaryentry{gls-api}{name=API, description={a set of functions and procedures 
+allowing the creation of applications 
+that access the features or data of an operating system, application, or other service [oxford language dictionary].}}
+\newacronym[see={[Glossary:]{gls-api}}]{api}{API}{Application Programming Interface\glsadd{gls-api}}
+
+
+
+
+%common abbreviations
+\newacronym{eg}{e.g.}{example given}
+\glsunset{eg} %always the abbreviation only will be shown
+\newacronym{etc}{etc.}{et~cetera}
+\glsunset{etc}
+
+
+
